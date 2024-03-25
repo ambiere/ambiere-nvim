@@ -13,4 +13,12 @@ return {
   { "rcarriga/nvim-notify", enabled = false },
   { "tpope/vim-fugitive" },
   { "mbbill/undotree" },
+  {
+    "rbong/vim-flog",
+    lazy = true,
+    cmd = { "Flog", "Flogsplit", "Floggit" },
+    dependencies = {
+      "tpope/vim-fugitive",
+    },
+  },
 }
