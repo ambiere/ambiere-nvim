@@ -21,4 +21,10 @@ return {
       "tpope/vim-fugitive",
     },
   },
+  {
+    "kylechui/nvim-surround",
+    version = "*",
+    event = "VeryLazy",
+    config = function() end,
+  },
 }
