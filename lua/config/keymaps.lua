@@ -4,43 +4,42 @@
 
 local map = vim.keymap.set
 
--- copy into clipboard
-map("n", "<leader>y", '"+y', { desc = "[N] yank to clipboard" })
-map("v", "<leader>y", '"+y', { desc = "[V] yank to clipboard" })
-map("n", "<leader>Y", '"+Y', { desc = "[V] yank to clipboard" })
-map("n", "<leader>Y", '"+Y', { desc = "[V] yank to clipboard" })
+map("n", "<leader>pv", vim.cmd.Ex, { desc = "Preview" })
+map({ "n", "v" }, "<leader>y", [["+y]], { desc = "Yank to clipboard +\\n" })
+map("n", "<leader>Y", [["+Y]], { desc = "Yank to clipboard" })
+map("x", "<leader>p", [["_dP]], { desc = "Paste yanked text over and over again" })
+map({ "n", "v" }, "<leader>d", [["_d]], { desc = "Delete without register" })
 
--- delete to void register
-map("n", "<leader>d", '"_d', { desc = "[N] delete to void register" })
+map("v", "K", ":m '<-2<CR>gv=gv", { desc = "Move lines up" })
+map("v", "J", ":m '>+1<CR>gv=gv", { desc = "Move lines down" })
 
--- quick fix navigation
-map("n", "<C-k>", "<cmd>cnext<CR>zz", { desc = "<C-k> Next: quick fix list" })
-map("n", "<C-j>", "<cmd>cprev<CR>zz", { desc = "<C-j> Prev: quick fix list" })
-map("n", "<leader>k", "<cmd>lnext<CR>zz", { desc = "<leader>l Next: quick fix list" })
-map("n", "<leader>j", "<cmd>lprev<CR>zz", { desc = "<leader>l Prev: quick fix list" })
+map("n", "J", "mzJ`z", { desc = "Joins the current line with the line below it" })
+map("n", "<C-d>", "<C-d>zz", { desc = "Scroll down by half page" })
+map("n", "<C-u>", "<C-u>zz", { desc = "Scroll up by half page" })
+map("n", "n", "nzzzv", { desc = "Next occurrence of the search pattern" })
+map("n", "N", "Nzzzv", { desc = "Previous occurrence of the search pattern" })
 
--- switch projects (not working)
-map("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>", { desc = "Switch projects using tmux" })
+map("i", "<C-c>", "<Esc>")
+map("i", "<C-s>", function()
+  vim.cmd("w")
+end, { desc = "Write file" })
 
--- move highlighted lines up or down
-map("v", "K", ":m '<-2<CR>gv=gv", { desc = "Move highlighted line(s) up" })
-map("v", "J", ":m '>+1<CR>gv=gv", { desc = "Move highlighted line(s) down" })
+map("n", "Q", "<nop>")
+map("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
+map("n", "<leader>f", vim.lsp.buf.format)
 
--- append line below it at the end of the current
--- line with space, maintaining cursor position
-map("n", "J", "mzJ`z", { desc = "Append line below it at the end of the current line" })
+map("n", "<C-k>", "<cmd>cnext<CR>zz")
+map("n", "<C-j>", "<cmd>cprev<CR>zz")
+map("n", "<leader>k", "<cmd>lnext<CR>zz", { desc = "Next quick fix" })
+map("n", "<leader>j", "<cmd>lprev<CR>zz", { desc = "Previous quick fix" })
 
--- half page jumping while keeping the cursor at the middle
-map("n", "<C-d>", "<C-d>zz", { desc = "Half page jumping down" })
-map("n", "<C-u>", "<C-u>zz", { desc = "Half page jumping up" })
+map("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
+map("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
 
--- allow seacrh term to stay in the middle
-map("n", "n", "nzzzv", { desc = "Allow search term to stay in the middle when going up" })
-map("n", "N", "Nzzzv", { desc = "Allow search term to stay in the middle when going down" })
+map("n", "<leader>ee", "oif (err) {<CR>}<Esc>Oreturn err<Esc>", { desc = "Insert err block" })
+map("n", "<leader>mr", "<cmd>CellularAutomaton make_it_rain<CR>", { desc = "Automaton" })
 
--- keep the yanked word to paste over and over
-map("x", "<leader>P", '"_dP', { desc = "keep yanked word" })
-
-map("n", "<leader><F5>", vim.cmd.UndotreeToggle, { desc = "Toggle undo tree" })
-map("n", "<leader>b]", "<cmd>bnext<CR>", { desc = "Go to next buffer" })
-map("n", "<leader>b[", "<cmd>bprevious<CR>", { desc = "Go to previous buffer" })
+map("n", "<leader><leader>", function()
+  vim.cmd("so")
+end, { desc = "Source file" })
+map("n", "<leader>u", vim.cmd.UndotreeToggle, { desc = "Toggle undotree" })
