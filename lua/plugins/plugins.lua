@@ -5,6 +5,7 @@ return {
     priority = 10000,
     config = function()
       vim.cmd([[colorscheme candle-grey]])
+      require("lazyvim.config.options").colorscheme = "candle-grey"
     end,
   },
   { "nvim-tree/nvim-web-devicons", enabled = false },
@@ -29,6 +30,5 @@ return {
     config = function() end,
   },
 
-  { "eandrju/cellular-automaton.nvim", event = "VeryLazy"
- },
+  { "eandrju/cellular-automaton.nvim", event = "VeryLazy" },
 }
