@@ -4,16 +4,31 @@ require("neo-tree").setup({
   use_popups_for_input = false,
   default_component_configs = {
     icon = {
-      folder_closed = "",
-      folder_open = "",
-      folder_empty = "󰉖",
-      folder_empty_open = "󰉖",
+      folder_closed = ">",
+      folder_open = ">>",
+      folder_empty = ">",
+      folder_empty_open = ">>",
       default = "*",
       highlight = "NeoTreeFileIcon",
     },
     modified = {
       symbol = "[+] ",
       highlight = "NeoTreeModified",
+    },
+    git_status = {
+      symbols = {
+        -- Change type
+        added = "+", -- or "✚", but this is redundant info if you use git_status_colors on the name
+        modified = "•", -- or "", but this is redundant info if you use git_status_colors on the name
+        deleted = "x", -- this can only be used in the git_status source
+        renamed = "→", -- this can only be used in the git_status source
+        -- Status type
+        untracked = "?",
+        ignored = "/",
+        unstaged = "☐",
+        staged = "☑",
+        conflict = "☒",
+      },
     },
   },
   renderers = {
