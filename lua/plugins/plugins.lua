@@ -1,10 +1,11 @@
 return {
-  { "rose-pine/neovim", name = "rose-pine" },
   {
-    "LazyVim/LazyVim",
-    opts = {
-      colorscheme = "rose-pine",
-    },
+    "aditya-azad/candle-grey",
+    name = "candle-grey",
+    priority = 10000,
+    config = function()
+      vim.cmd([[colorscheme candle-grey]])
+    end,
   },
   { "nvim-tree/nvim-web-devicons", enabled = false },
   { "akinsho/bufferline.nvim", enabled = false },
@@ -27,4 +28,7 @@ return {
     event = "VeryLazy",
     config = function() end,
   },
+
+  { "eandrju/cellular-automaton.nvim", event = "VeryLazy"
+ },
 }
