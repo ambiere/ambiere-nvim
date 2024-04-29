@@ -25,3 +25,5 @@ vim.opt.termguicolors = true
 -- vim.opt.isfname:append("@-@")
 
 vim.opt.updatetime = 50
+-- Set the shell to zsh
+vim.o.shell = "zsh -i"
