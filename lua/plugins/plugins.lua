@@ -1,11 +1,10 @@
 return {
   {
-    "aditya-azad/candle-grey",
-    name = "candle-grey",
-    priority = 10000,
+    "ambiere/dark-mono",
+    name = "dark-mono",
+    priority = 1000,
     config = function()
-      vim.cmd([[colorscheme candle-grey]])
-      require("lazyvim.config.options").colorscheme = "candle-grey"
+      vim.cmd([[colorscheme dark-mono]])
     end,
   },
   { "nvim-tree/nvim-web-devicons", enabled = false },
