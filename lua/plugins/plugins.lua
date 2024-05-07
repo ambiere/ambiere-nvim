@@ -28,6 +28,12 @@ return {
     event = "VeryLazy",
     config = function() end,
   },
-
   { "eandrju/cellular-automaton.nvim", event = "VeryLazy" },
+  {
+    "max397574/colortils.nvim",
+    cmd = "Colortils",
+    config = function()
+      require("colortils").setup()
+    end,
+  },
 }
