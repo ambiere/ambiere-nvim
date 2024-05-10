@@ -50,3 +50,8 @@ map("n", "<leader>cpl", ":Colortils lighten<CR>", { desc = "Open color picker li
 map("n", "<leader>cpd", ":Colortils darken<CR>", { desc = "Open color picker darken" })
 map("n", "<leader>cpg", ":Colortils greyscale<CR>", { desc = "Open color picker greyscale" })
 map("n", "<leader>cpc", ":Colortils css list<CR>", { desc = "Open color picker css list" })
+
+local opts = { noremap = true, silent = true }
+
+map("n", "<C-c>", "<cmd>PickColor<cr>", opts)
+map("i", "<C-c>", "<cmd>PickColorInsert<cr>", opts)
