@@ -30,10 +30,11 @@ return {
   },
   { "eandrju/cellular-automaton.nvim", event = "VeryLazy" },
   {
-    "max397574/colortils.nvim",
-    cmd = "Colortils",
+    "ziontee113/color-picker.nvim",
     config = function()
-      require("colortils").setup()
+      local opts = require("config.color-picker")
+      require("color-picker").setup(opts)
+      vim.cmd([[hi FloatBorder guibg=NONE]]) -- if you don't want weird border background colors around the popup.
     end,
   },
 }
