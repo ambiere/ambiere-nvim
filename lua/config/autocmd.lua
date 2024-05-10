@@ -10,6 +10,12 @@ autocmd("BufWritePre", {
   command = [[%s/\s\+$//e]],
 })
 
+autocmd("BufWritePre", {
+  group = ambiereGroup,
+  pattern = "*.{js,jsx}",
+  command = [[%s/;$//e]],
+})
+
 autocmd("TextYankPost", {
   group = yankGroup,
   pattern = "*",
